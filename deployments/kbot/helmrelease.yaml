@@ -16,7 +16,7 @@ spec:
   install:
     createNamespace: true
   values:
-    replicaCount: 1
+    replicaCount: 2
     imagePullSecrets:
       name: ghcr-creds
     secret:
