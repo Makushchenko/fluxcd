@@ -46,3 +46,13 @@ printf '{"auths":{"%s":{"username":"%s","password":"%s","email":"%s","auth":"%s"
 | kubectl apply -f -
 kubectl get secret ghcr-creds -n kbot
 kubectl describe secret ghcr-creds -n kbot
+
+kubectl get pods -n flux-system -owide
+kubectl get pods source-controller-7f4885bfbf-j89ck -n flux-system -owide
+kubectl describe pod source-controller-7f4885bfbf-j89ck -n flux-system
+kubectl get pods -n flux-system -o wide
+kubectl get pods -n flux-system -l app=source-controller
+kubectl logs source-controller-78b674c466-zkch7 -n flux-system
+
+
+kubectl get pods -n kbot

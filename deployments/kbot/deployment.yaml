@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: demo
   namespace: kbot
+  flux: test1
 spec:
   replicas: 1
   selector:

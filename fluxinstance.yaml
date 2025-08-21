@@ -20,7 +20,6 @@ spec:
     - image-automation-controller
   sync:
     kind: GitRepository
-    provider: github
     url: "https://github.com/Makushchenko/fluxcd.git"
     ref: "refs/heads/main"
     path: "deployments/kbot"  
@@ -30,9 +29,6 @@ spec:
     multitenant: false
     networkPolicy: true
     domain: "cluster.local"
-  storage:
-    class: "standard"
-    size: "10Gi"
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux
