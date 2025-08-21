@@ -53,6 +53,8 @@ kubectl describe pod source-controller-7f4885bfbf-j89ck -n flux-system
 kubectl get pods -n flux-system -o wide
 kubectl get pods -n flux-system -l app=source-controller
 kubectl logs source-controller-78b674c466-zkch7 -n flux-system
+kubectl -n flux-system get kustomization -o wide
+    Deployment/kbot/demo dry-run failed (Invalid): Deployment.apps "demo" is invalid: spec.template.spec.containers[0].env[0].valueFrom.secretKeyRef.name: Invalid value: "TELE_TOKEN": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')..
 
 
 kubectl get pods -n kbot

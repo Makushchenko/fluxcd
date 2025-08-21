@@ -34,11 +34,11 @@ spec:
             - mountPath: /dev/mem
               name: dev-mem
           env:
-            - name: kbot
+            - name: TELE_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: TELE_TOKEN
-                  key:  token
+                  name: kbot
+                  key: token
       volumes:
         - hostPath:
             path: /dev/mem
