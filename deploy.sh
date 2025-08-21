@@ -52,7 +52,7 @@ kubectl get pods source-controller-7f4885bfbf-j89ck -n flux-system -owide
 kubectl describe pod source-controller-7f4885bfbf-j89ck -n flux-system
 kubectl get pods -n flux-system -o wide
 kubectl get pods -n flux-system -l app=source-controller
-kubectl logs source-controller-78b674c466-zkch7 -n flux-system -f
+kubectl logs source-controller-78b674c466-zkch7 -n flux-system
 kubectl describe pod source-controller-78b674c466-zkch7 -n flux-system
 kubectl -n flux-system get kustomization -o wide
 
@@ -61,6 +61,8 @@ kubectl -n flux-system get kustomization flux-system -o jsonpath='{.spec.prune}{
 
 # Authenticate to GitHub Container Registry
 echo $GH_PAT | docker login ghcr.io -u Makushchenko --password-stdin
+
+helm ls -n kbot
 
 kubectl get pods -n kbot
 kubectl describe pods kbot-7cb46ff7d-zrg6p -n kbot
