@@ -52,12 +52,16 @@ kubectl get pods source-controller-7f4885bfbf-j89ck -n flux-system -owide
 kubectl describe pod source-controller-7f4885bfbf-j89ck -n flux-system
 kubectl get pods -n flux-system -o wide
 kubectl get pods -n flux-system -l app=source-controller
-kubectl logs source-controller-78b674c466-zkch7 -n flux-system
+kubectl logs source-controller-78b674c466-zkch7 -n flux-system -f
+kubectl describe pod source-controller-78b674c466-zkch7 -n flux-system
 kubectl -n flux-system get kustomization -o wide
-    Deployment/kbot/demo dry-run failed (Invalid): Deployment.apps "demo" is invalid: spec.template.spec.containers[0].env[0].valueFrom.secretKeyRef.name: Invalid value: "TELE_TOKEN": a lowercase RFC 1123 subdomain must consist of lower case alphanumeric characters, '-' or '.', and must start and end with an alphanumeric character (e.g. 'example.com', regex used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')..
+
+# --- Check whether prune is enabled
+kubectl -n flux-system get kustomization flux-system -o jsonpath='{.spec.prune}{"\n"}'
 
 # Authenticate to GitHub Container Registry
 echo $GH_PAT | docker login ghcr.io -u Makushchenko --password-stdin
 
 kubectl get pods -n kbot
-kubectl describe pods demo-85647cf59d-6654p -n kbot
+kubectl describe pods demo-d5df5c897-mbpj2 -n kbot
+kubectl logs demo-d5df5c897-mbpj2 -n kbot -f
