@@ -65,3 +65,5 @@ echo $GH_PAT | docker login ghcr.io -u Makushchenko --password-stdin
 kubectl get pods -n kbot
 kubectl describe pods demo-d5df5c897-mbpj2 -n kbot
 kubectl logs demo-d5df5c897-mbpj2 -n kbot -f
+
+ghcr.io/makushchenko/kbot:v1.0.4-6e0844b-linux-amd64

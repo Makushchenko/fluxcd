@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kbot
+  namespace: kbot
+spec:
+  interval: 1m
+  releaseName: kbot
+  chart:
+    spec:
+      chart: ./helm/kbot
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    replicaCount: 1
+    imagePullSecrets:
+      name: ghcr-creds
+    secret:
+      name: kbot
+      key: token
+      env: TELE_TOKEN
+    image:
+      repository: ghcr.io/makushchenko
+      tag: v1.0.4-6e0844b
+      pullPolicy: Always
+      os: linux
+      arch: amd64
+    service:
+      type: ClusterIP
+      port: 80
