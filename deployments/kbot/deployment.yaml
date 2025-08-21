@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  namespace: kbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-kbot
+  template:
+    metadata:
+      labels:
+        app: demo-kbot
+    spec:
+      imagePullSecrets:
+        - name: ghcr-creds
+      containers:
+        - name: kbot     
+          image: ghcr.io/makushchenko/kbot:1.0.4-f488dae-linux-amd64
+          imagePullPolicy: Always
+          command: ["/kbot"]
+          args: ["start"]         
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          volumeMounts:
+            - mountPath: /dev/mem
+              name: dev-mem
+          env:
+            - name: kbot
+              valueFrom:
+                secretKeyRef:
+                  name: TELE_TOKEN
+                  key:  token
+      volumes:
+        - hostPath:
+            path: /dev/mem
+            type: ""
+          name: dev-mem
