@@ -18,7 +18,7 @@ spec:
         - name: ghcr-creds
       containers:
         - name: kbot     
-          image: ghcr.io/makushchenko/kbot:1.0.4-f488dae-linux-amd64
+          image: ghcr.io/makushchenko/kbot:v1.0.4-6e0844b-linux-amd64
           imagePullPolicy: Always
           command: ["/kbot"]
           args: ["start"]         
