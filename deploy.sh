@@ -67,5 +67,3 @@ helm ls -n kbot
 kubectl get pods -n kbot -w
 kubectl describe pods kbot-7cb46ff7d-zrg6p -n kbot
 kubectl logs kbot-7cb46ff7d-zrg6p -n kbot -f
-
-ghcr.io/makushchenko/kbot:v1.0.4-6e0844b-linux-amd64
